@@ -34,7 +34,9 @@ variable "worker_bee_size" {
 # keypair name
 variable "ec2_key" {
   type = string
-  default = "datalysis-one"
+  # insert keypair name here
+  # you will not be able to SSH into the instance(s) otherwise
+  default = "[keypair name goes here]"
 }
 
 # Internal, "fake" IPs are allocated to resources in this VPC.  In this case,

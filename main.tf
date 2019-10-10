@@ -2,8 +2,8 @@ provider "aws" {
   region = var.region
 }
 
-# VPC: Virtual Private Cloud, is an SDN (Software-Defined Network) addressing
-# abstraction that sections off a piece of the "cloud" isolated it from the WWW.
+# VPC: Virtual Private Cloud, is an SDN (Software-Defined Network) abstraction
+# that sections off a piece of the "cloud" and isolates it from the WWW.
 resource "aws_vpc" "main" {
   cidr_block = "${var.cidr_prefix}.0.0/16"
   # /16 means the first 16 bits are fixed and the rest is
@@ -46,7 +46,7 @@ resource "aws_route_table_association" "public_association" {
   route_table_id = "${aws_route_table.public_to_www.id}"
 }
 
-# Route WWW-bound traffic from the private subnet through the bastion/NAT host.
+# Route WWW-bound traffic from the private subnet through the Bastion/NAT host.
 resource "aws_route_table" "private_to_nat" {
     vpc_id = "${aws_vpc.main.id}"
     route {
@@ -107,7 +107,7 @@ resource "aws_instance" "bastion" {
 }
 
 # Worker Bee EC2 box is wrapped in a security group that permits any traffic
-# within the subnet, SSH traffic from the public subnet, no traffic from the WWW.
+# within the subnet and SSH traffic from the public subnet.
 resource "aws_security_group" "worker_bee" {
   name        = "Worker Bee"
   description = "Allow inbound SSH traffic"
