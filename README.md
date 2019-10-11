@@ -26,6 +26,10 @@ The setup is concisely illustrated below.  Outbound traffic is not shown for the
 
 
 ## Installation
+* Create a key pair on AWS:
+	* EC2 > Key Pairs > Create Key Pair
+* Edit `variables.tf`: insert the name of the aforemade key pair. 
 * Install [Terraform](https://www.terraform.io)
+* `cd` [ whatever folder has `main.tf` and `variables.tf` ]
 * `terraform plan`
 * `terraform apply`

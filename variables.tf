@@ -31,12 +31,12 @@ variable "worker_bee_size" {
   default = "t2.nano"
 }
 
-# keypair name
+# key pair name
 variable "ec2_key" {
   type = string
-  # insert keypair name here
+  # insert key pair name here
   # you will not be able to SSH into the instance(s) otherwise
-  default = "[keypair name goes here]"
+  default = "[key pair name goes here]"
 }
 
 # Internal, "fake" IPs are allocated to resources in this VPC.  In this case,
